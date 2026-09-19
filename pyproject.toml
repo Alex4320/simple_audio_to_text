@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simple-audio-to-text"
+version = "0.1.0"
+description = "Offline speech-to-text from files, live audio, recordings, and video"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Speech to Text authors" }]
+urls = { Homepage = "https://github.com/Alex4320/simple_audio_to_text", Repository = "https://github.com/Alex4320/simple_audio_to_text.git" }
+keywords = ["speech-to-text", "whisper", "transcription", "offline", "desktop"]
+classifiers = [
+  "License :: Other/Proprietary License",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+  "PySide6>=6.6",
+  "faster-whisper>=1.0.3",
+  "sounddevice>=0.4.7",
+  "soundcard>=0.4.3",
+  "numpy>=1.26",
+  "soundfile>=0.12.1",
+  "imageio-ffmpeg>=0.5.1",
+  "platformdirs>=4.2",
+  "psutil>=5.9",
+  "comtypes>=1.4; sys_platform == 'win32'",
+  "pycaw>=20240210; sys_platform == 'win32'",
+  "pulsectl>=24.4; sys_platform == 'linux'",
+]
+
+[project.scripts]
+simple-audio-to-text = "simple_audio_to_text.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+simple_audio_to_text = ["assets/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
